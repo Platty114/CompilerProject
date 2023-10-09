@@ -74,7 +74,7 @@ bool isSpecialChar(char & character){
         case '=':
             returnValue = true;
             break;
-        case '|':
+        case '!':
             returnValue = true;
             break;
         case '{':

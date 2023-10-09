@@ -7,7 +7,7 @@ std::string specialCharToOutput(std::string & givenCharacters, int lineNumber){
     if(
         givenCharacters.compare("+") == 0
     ){ 
-        outputString = "EQUALS";
+        outputString = "ADD";
     } else if(
         givenCharacters.compare("-") == 0
     ){ 
@@ -101,7 +101,7 @@ std::string idToOutput(std::string & id, int lineNumber){
 }
 
 std::string numToOutput(std::string & num, int lineNumber){
-    return std::to_string(lineNumber) + ": " + num;
+    return std::to_string(lineNumber) + ": " + "NUM " + "\"" + num + "\"";
 }
 
 std::string keywordToOutput(std::string & keyword, int lineNumber){

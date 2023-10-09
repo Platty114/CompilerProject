@@ -1,0 +1,126 @@
+// TEST 3
+
+12: ERROR: no nesting comments! Moving on
+
+// TEST 4
+21: INT
+21: ID "main"
+21: O_PAREN
+21: VOID
+21: C_PAREN
+22: O_BRACE
+
+// TEST 5
+34: INT
+34: ID "x"
+34: EQUALS
+34: NUM "999"
+34: SEM_COL
+35: INT
+35: ID "y"
+35: EQUALS
+35: NUM "10"
+35: SEM_COL
+36: INT
+36: ID "z"
+36: EQUALS
+36: NUM "10"
+36: DIVIDE
+36: NUM "5"
+36: SEM_COL
+37: INT
+37: ID "w"
+37: EQUALS
+37: NUM "3"
+37: DIVIDE
+37: NUM "1"
+37: SEM_COL
+38: INT
+38: ID "q"
+38: EQUALS
+38: ID "x"
+38: DIVIDE
+38: ID "y"
+38: SEM_COL
+
+// TEST 6
+46: ID "z"
+46: EQUALS
+46: NUM "1"
+46: ADD
+46: NUM "1"
+46: SEM_COL
+47: ID "z"
+47: EQUALS
+47: NUM "2"
+47: MULTIPLY
+47: ID "z"
+47: SEM_COL
+48: ID "z"
+48: EQUALS
+48: ID "z"
+48: DIVIDE
+48: NUM "2"
+48: SEM_COL
+49: ID "z"
+49: EQUALS
+49: ID "z"
+49: MINUS
+49: NUM "1"
+49: SEM_COL
+
+//brackets testing
+53: ID "z"
+53: EQUALS
+53: O_PAREN
+53: O_PAREN
+53: NUM "1"
+53: DIVIDE
+53: NUM "9"
+53: C_PAREN
+53: EQUALS
+53: O_PAREN
+53: NUM "3"
+53: MULTIPLY
+53: ID "q"
+53: C_PAREN
+53: C_PAREN
+53: SEM_COL
+
+// TEST 7
+60: LESS
+61: GREATER
+62: EQUALS
+63: EQUALS_EQUALS
+64: NOT_EQUALS
+65: COMMA
+66: O_PAREN
+67: C_PAREN
+68: O_BRACE
+69: C_BRACE
+71: ERROR:invalid token ! . moving on
+
+// TEST 8
+77: INT
+78: VOID
+79: IF
+80: RETURN
+81: WHILE
+
+// TEST 9
+88: INT
+88: ERROR:invalid token 9num . moving on
+88: EQUALS
+88: NUM "9"
+88: SEM_COL
+
+// TEST 10
+96: ERROR:invalid token Int . moving on
+97: ERROR:invalid token VOID . moving on
+98: ERROR:invalid token whiLE . moving on
+99: ERROR:invalid token iF . moving on
+100: ERROR:invalid token Return . moving on
+
+102: RETURN
+102: SEM_COL
+103: C_BRACE

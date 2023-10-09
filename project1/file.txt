@@ -2,10 +2,13 @@ void main (void)
 {   int x; int y;
     /* 
         this is a comment
+        /* this a nested comment */
     */
     x = input (); y = input ();
     output = (gcd(x, y));
     if(x == 999){
         y = x/y;
     };
+
+    9xt = 4;
 }
