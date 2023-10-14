@@ -1,107 +1,107 @@
-12: ERROR: no nesting comments! Moving on
-21: INT
-21: ID "main"
-21: O_PAREN
-21: VOID
-21: C_PAREN
-22: O_BRACE
-34: INT
-34: ID "x"
-34: EQUALS
-34: NUM "999"
-34: SEM_COL
+13: ERROR: no nesting comments! Moving on
+22: INT
+22: ID "main"
+22: O_PAREN
+22: VOID
+22: C_PAREN
+23: O_BRACE
 35: INT
-35: ID "y"
+35: ID "x"
 35: EQUALS
-35: NUM "10"
+35: NUM "999"
 35: SEM_COL
 36: INT
-36: ID "z"
+36: ID "y"
 36: EQUALS
 36: NUM "10"
-36: DIVIDE
-36: NUM "5"
 36: SEM_COL
 37: INT
-37: ID "w"
+37: ID "z"
 37: EQUALS
-37: NUM "3"
+37: NUM "10"
 37: DIVIDE
-37: NUM "1"
+37: NUM "5"
 37: SEM_COL
 38: INT
-38: ID "q"
+38: ID "w"
 38: EQUALS
-38: ID "x"
+38: NUM "3"
 38: DIVIDE
-38: ID "y"
+38: NUM "1"
 38: SEM_COL
-46: ID "z"
-46: EQUALS
-46: NUM "1"
-46: ADD
-46: NUM "1"
-46: SEM_COL
+39: INT
+39: ID "q"
+39: EQUALS
+39: ID "x"
+39: DIVIDE
+39: ID "y"
+39: SEM_COL
 47: ID "z"
 47: EQUALS
-47: NUM "2"
-47: MULTIPLY
-47: ID "z"
+47: NUM "1"
+47: ADD
+47: NUM "1"
 47: SEM_COL
 48: ID "z"
 48: EQUALS
-48: ID "z"
-48: DIVIDE
 48: NUM "2"
+48: MULTIPLY
+48: ID "z"
 48: SEM_COL
 49: ID "z"
 49: EQUALS
 49: ID "z"
-49: MINUS
-49: NUM "1"
+49: DIVIDE
+49: NUM "2"
 49: SEM_COL
-53: ID "z"
-53: EQUALS
-53: O_PAREN
-53: O_PAREN
-53: NUM "1"
-53: DIVIDE
-53: NUM "9"
-53: C_PAREN
-53: ADD
-53: O_PAREN
-53: NUM "3"
-53: MULTIPLY
-53: ID "q"
-53: C_PAREN
-53: C_PAREN
-53: SEM_COL
-60: LESS
-61: GREATER
-62: EQUALS
-63: EQUALS_EQUALS
-64: NOT_EQUALS
-65: COMMA
-66: O_PAREN
-67: C_PAREN
-68: O_BRACE
-69: C_BRACE
-71: ERROR:invalid token ! . moving on
-77: INT
-78: VOID
-79: IF
-80: RETURN
-81: WHILE
-88: INT
-88: ERROR:invalid token 9num . moving on
-88: EQUALS
-88: NUM "9"
-88: SEM_COL
-96: ERROR:invalid token Int . moving on
-97: ERROR:invalid token VOID . moving on
-98: ERROR:invalid token whiLE . moving on
-99: ERROR:invalid token iF . moving on
-100: ERROR:invalid token Return . moving on
-102: RETURN
-102: SEM_COL
-103: C_BRACE
+50: ID "z"
+50: EQUALS
+50: ID "z"
+50: MINUS
+50: NUM "1"
+50: SEM_COL
+54: ID "z"
+54: EQUALS
+54: O_PAREN
+54: O_PAREN
+54: NUM "1"
+54: DIVIDE
+54: NUM "9"
+54: C_PAREN
+54: ADD
+54: O_PAREN
+54: NUM "3"
+54: MULTIPLY
+54: ID "q"
+54: C_PAREN
+54: C_PAREN
+54: SEM_COL
+61: LESS
+62: GREATER
+63: EQUALS
+64: EQUALS_EQUALS
+65: NOT_EQUALS
+66: COMMA
+67: O_PAREN
+68: C_PAREN
+69: O_BRACE
+70: C_BRACE
+72: ERROR: invalid token ! . moving on
+78: INT
+79: VOID
+80: IF
+81: RETURN
+82: WHILE
+89: INT
+89: ERROR: invalid token 9num . moving on
+89: EQUALS
+89: NUM "9"
+89: SEM_COL
+97: ERROR: invalid token Int . moving on
+98: ERROR: invalid token VOID . moving on
+99: ERROR: invalid token whiLE . moving on
+100: ERROR: invalid token iF . moving on
+101: ERROR: invalid token Return . moving on
+103: RETURN
+103: SEM_COL
+104: C_BRACE
