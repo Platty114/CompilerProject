@@ -1,0 +1,28 @@
+int test(int y[]){
+    int x;
+
+    x = main(x, 7);
+}
+
+void test(int x[]){
+    if(x == 8)
+        main(x, y);
+}
+
+int test(void){
+    return 7;
+}
+
+int main(int x, int y){
+    if(x = 4)
+        y = x;
+        if(y = 2)
+            return y;
+    else
+        x = y;
+    while(y > 0)
+        y = y - 1;
+}
+
+
+
