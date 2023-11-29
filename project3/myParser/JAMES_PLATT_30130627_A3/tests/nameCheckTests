@@ -1,0 +1,182 @@
+/*
+    this file contains all tests for 
+    semantic errors involving name checks.
+    there are multiple tests in this file,
+    do perform a specific test, just uncomment
+    the test and run the parser on it.
+*/
+
+
+// //TEST 1 (From hand out)
+// //Declaration before use: 
+// //should throw error
+// void foo ( void ) {
+//     x = 1;
+// }
+// int x;
+// // output
+// /*
+// pring the tree!
+// Checking semantics
+// Use of unitialized var x on line 13
+// Exiting
+// */
+
+// //TEST 2 (From hand out)
+// //testing redeclaration in different scopes
+// //should be accepted
+// void foo ( void ) {
+//     int x;
+//     x = 0;
+// }
+// void main ( void ) {
+//     int foo;
+//     foo = 0;
+// }
+// //EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Semantics are good!
+// Program 
+// Func Void foo
+//  @28	Var Int x @26
+// 	Expression @27 of type INT: x = INT: 0
+// Func Void main
+//  @32	Var Int foo @30
+// 	Expression @31 of type INT: foo = INT: 0
+// */
+
+// // TEST 2.5 
+// // testing if we can use global and local
+// // variables with the same name
+// int x;
+// int main(void){
+//     int x;
+
+//     x = 7 > 5;
+//     return x;
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Semantics are good!
+// Program 
+// 	Var Int x @53
+// Func Int main @59
+// 	Var Int x @55
+// 	Expression @57 of type INT: x = INT: 7 > 5
+// 	Return Expression @58: INT: x
+// */
+
+// // TEST 3 : Redeclaration in same scope:
+// // should throw error
+// void main ( void ) {
+// int x;
+// int x;
+// x = 7;
+// }
+// // EXPECTED OUTPUT :
+// /*
+// pring the tree!
+// Checking semantics
+// Redeclaration of x on line 54
+// Exiting
+// */
+
+// // TEST 4 : Redeclaration in args list:
+// // should throw error
+// void main (int x, int x) {
+// x = 7;
+// }
+// // EXPECTED OUTPUT :
+// /*
+// pring the tree!
+// Checking semantics
+// Redeclaration of x on line 67
+// Exiting
+// */
+
+// // TEST 5 : Redeclaration of arg from list:
+// // should throw error
+// void main (int x) {
+//     int x;
+//     x = 7;
+// }
+// // EXPECTED OUTPUT :
+// /*
+// pring the tree!
+// Checking semantics
+// Redeclaration of x on line 81
+// Exiting
+// */
+
+// // TEST 6 Parameter Scope:
+// // should be accepted
+// void foo ( int x ) {
+// x = 1;
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Semantics are good!
+// Program 
+// Func Void foo
+//  @96	Int Param x @94
+// 	Expression @95 of type INT: x = INT: 1
+// */
+
+// // TEST 6.5
+// // testing if we can use a global variable
+// // inside of a function
+// int x;
+// void main(void){
+//     x = 7;
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Semantics are good!
+// Program 
+// 	Var Int x @134
+// Func Void main
+//  @137	Expression @136 of type INT: x = INT: 7
+// */
+
+// // TEST 7 Main Function Error:
+// // should procude error
+// void main ( void ) {
+//     int y;
+//     int x;
+//     y = 0;
+// }
+// int x;
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Func declaration after main on line 114
+// Exiting
+// */
+
+// // TEST 7.5 Main Function Error:
+// // should procude error
+// // (just showing it works with functions too)
+// void main ( void ) {
+//     int y;
+//     int x;
+//     y = 0;
+// }
+// int temp(void){
+//     return 7;
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Func declaration after main on line 134
+// Exiting
+// */

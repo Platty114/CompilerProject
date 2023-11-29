@@ -1,0 +1,132 @@
+/*
+    this file contains all tests for 
+    semantic errors involving type checks.
+    there are multiple tests in this file,
+    do perform a specific test, just uncomment
+    the test and run the parser on it.
+*/
+
+// // TEST 1
+// //Type Checking Expressions:
+// // should cause an error
+// void main ( void ) {
+// main() + 1;
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Non matching types on line 13 
+// Exiting
+// */
+
+// // TEST 1.5
+// // Type checking some other expression
+// void main(void){
+//     int x;
+//     int y[4];
+
+//     x = y[3] + 7;
+//     y = y + 1;
+// }
+// // EXPECTED OUTPUT
+// // I chose to allow the second expression
+// // of moving the y pointer, since in c
+// // you can do this kind of arithmetic.
+// // not sure if it is correct, but isn't
+// // hard to change if it is not.
+// /*
+// pring the tree!
+// Checking semantics
+// Semantics are good!
+// Program 
+// Func Void main
+//  @31	Var Int x @26
+// 	Var Int[4] y @27
+// 	Expression @29 of type INT: x = INT: y[INT: 3] + 7
+// 	Expression @30 of type INT[]: y = INT: y + 1
+// */
+
+// // TEST 2
+// // Incorrect use of function call syntax:
+// // should cause an error
+// // (I choose to throw an "function 'x' undefined" 
+// // since it is expecting that were refering to a function
+// // )
+// void main ( void ) {
+// int x;
+// x();
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Use of undefined function x on line 58
+// Exiting
+// */
+
+// // TEST 3
+// // Incorrect use of array index syntax:
+// void main ( void ) {
+// int x;
+// x[10];
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// array indexing on non array x on line 72
+// Exiting
+// */
+
+// // TEST 4
+// // incorrect function arguments
+// // should cause an error
+// void foo ( int bar[] ) { 
+   
+// }
+// void main ( void ) {
+// int x;
+// foo(x);
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Invalid argument(s) in call for function foo on line 90
+// Expecing INT[], recieved INT
+// */
+
+// // TEST 4.1
+// // missing function arguments
+// // should cause an error
+// void foo ( int bar[] ) { 
+
+// }
+// void main ( void ) {
+// int x;
+// foo();
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// function call to foo on line 108 missing args
+// */
+
+// // TEST 4.2
+// // too many arguments for funciton
+// // should cause an error
+// void foo ( int bar[] ) { 
+
+// }
+// void main ( void ) {
+// int x;
+// foo(x, 7);
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Too many arguments for call to function foo
+// */

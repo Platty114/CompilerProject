@@ -599,10 +599,9 @@ void printExpr(struct expr * expr){
 
 void printParam(struct param * inputparams){
 
+    if(inputparams->next != NULL)
+        printParam(inputparams->next);
     if(inputparams != NULL){
-       if(inputparams->next != NULL)
-            printParam(inputparams->next);
-  
         switch(inputparams->type){
             case Int:
                 if(inputparams->array)

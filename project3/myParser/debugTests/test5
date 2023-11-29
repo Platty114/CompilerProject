@@ -1,0 +1,16 @@
+int notMain(void){
+    int x;
+
+    x = gcd(y,7);
+}
+
+int test(void){
+    return u;
+}
+
+int main(void){
+    int x; 
+    int u;
+
+    x = notMain();
+}

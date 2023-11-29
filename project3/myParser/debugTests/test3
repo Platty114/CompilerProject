@@ -1,10 +1,15 @@
+int x;
+
 int teste(void){
     int x;
+
+    x == 7;
 
     x = main(x, 7);
 }
 
-int test(void){
+int test(int x){
+
     return 7;
 }
 

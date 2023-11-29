@@ -417,9 +417,6 @@ void printArgsList(struct argsList * argsList){
 }
 
 void printArgs(struct args * args){
-    if(args == NULL){
-        return;
-    }
     printArgsList(args->argsList);
 }
 
@@ -598,11 +595,9 @@ void printExpr(struct expr * expr){
 }
 
 void printParam(struct param * inputparams){
-
+    if(inputparams->next != NULL)
+        printParam(inputparams->next);
     if(inputparams != NULL){
-       if(inputparams->next != NULL)
-            printParam(inputparams->next);
-  
         switch(inputparams->type){
             case Int:
                 if(inputparams->array)
@@ -627,13 +622,11 @@ void printStmt(struct stmt * stmt){
         return;
     }
     else{
-
         if(
             stmt->next != NULL 
-            && stmt->next->type >= 0
-            && stmt->next->type <= 4
+            && stmt->next->type > -1
+            && stmt->next->type < 5
         ){
-
             printStmt(stmt->next);
             printf("\n");
         }
@@ -642,6 +635,9 @@ void printStmt(struct stmt * stmt){
                 printf("Expression : ");
                 printExpr(stmt->expr);
                 break;
+            // case COMP_STMT:
+            //     // not implemented
+            //     break;
             case SELEC_STMT:
                 // print select stmt
                 printf("If Expression: ");
@@ -726,6 +722,7 @@ void printDecl(struct decl * parser_result){
                 printf("Func Void %s\n", parser_result->ID);
                 break;
         }
+
         if(parser_result->params != NULL)
             printParam(parser_result->params);
         if(parser_result->compStmt != NULL){
