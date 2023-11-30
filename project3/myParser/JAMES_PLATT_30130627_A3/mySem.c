@@ -5,6 +5,8 @@
 GHashTable *GlobalNameScope;
 //function argument hash table
 GHashTable *GlobalFunctionArgs;
+//hash table for function variable collisions
+GHashTable *FunctionNameCollisions;
 
 
 
@@ -14,6 +16,9 @@ char* INT = "INT";
 char* VOID = "VOID";
 char* INTFUNCTION = "INTFUNC";
 char* VOIDFUNCTION = "VOIDFUNC";
+
+//var tracker
+int varCount = 1;
 
 //helper functions for dealing with g tables
 char* getValueFromTable(GHashTable * table, char * str){
@@ -374,6 +379,20 @@ char* checkVar(struct var * var, GHashTable * scope){
         return NULL;
     }
     else {
+        //need to check if var ID is has been changed due
+        //to name collision
+        if(
+            getValueFromTable(
+                FunctionNameCollisions,
+                var->ID
+            ) != NULL
+        ){
+            //if so we need to update name
+            var->ID = getValueFromTable(
+                FunctionNameCollisions,
+                var->ID
+            );
+        }
 
         //need to check if var is intialized in this scope
         //or is in global scope
@@ -478,7 +497,7 @@ char* checkExpr(struct expr * expr, GHashTable * scope){
             sameType == false
         ){
             printf(
-                "Non matching types on line %d \nExiting\n",
+                "Non matching types on line %d check \nExiting\n",
                 expr->lineNum
             );
             exit(1);
@@ -502,6 +521,37 @@ void checkParam(
                 scope,
                 functionName
             );
+
+        //check if we are in function scope, 
+        if(
+            scope != GlobalNameScope
+        ){
+            //check if variable is defined in global name scope
+            if(
+                getValueFromTable(
+                    GlobalNameScope,
+                    inputparams->ID
+                ) != NULL
+            ){
+
+                // we now need to rename the variable so that 
+                // it has a unique identifier
+                char* temp = inputparams->ID;
+                char temp2[50];
+                sprintf(temp2, "%d", varCount);
+                varCount++;
+                inputparams->ID = (char *) malloc(strlen(temp) +2); 
+                strcpy(inputparams->ID, temp);
+                strcat(inputparams->ID, temp2);
+                insertIntoTable(
+                    FunctionNameCollisions,
+                    temp,
+                    inputparams->ID
+                );
+
+            }
+        }
+
 
         //check if name is already in use
         //(this is kinda overkill)
@@ -669,6 +719,8 @@ void checkDecl(struct decl * parser_result, GHashTable * scope){
         checkDecl(parser_result->next, scope);
     }
 
+
+
     //check if main is already defined
     if(
         getValueFromTable(
@@ -686,7 +738,6 @@ void checkDecl(struct decl * parser_result, GHashTable * scope){
     //VARIABLE DECLARATION
     //could be local or global
     if(parser_result->compStmt == NULL){
-
         //for all types of gloabla variable, 
         //we need to check if it already is in
         //GlobalNameScope, and if not add it. IF so
@@ -709,6 +760,52 @@ void checkDecl(struct decl * parser_result, GHashTable * scope){
             );
             exit(1);
         } 
+        //check if it is a variable that collides
+        else if(
+            FunctionNameCollisions != NULL
+            &&
+            getValueFromTable(
+                FunctionNameCollisions,
+                parser_result->ID
+            ) != NULL
+        ){
+            printf(
+                "Redeclaration of %s on line %d\nExiting\n",
+                parser_result->ID,
+                parser_result->lineNum
+            );
+            exit(1);
+        }
+
+        //check if we are in function scope, 
+        if(
+            scope != GlobalNameScope
+        ){
+            //check if variable is defined in global name scope
+            if(
+                getValueFromTable(
+                    GlobalNameScope,
+                    parser_result->ID
+                ) != NULL
+            ){
+
+                // we now need to rename the variable so that 
+                // it has a unique identifier
+                char* temp = parser_result->ID;
+                char temp2[50];
+                sprintf(temp2, "%d", varCount);
+                varCount++;
+                parser_result->ID = (char *) malloc(strlen(temp) +2); 
+                strcpy(parser_result->ID, temp);
+                strcat(parser_result->ID, temp2);
+                insertIntoTable(
+                    FunctionNameCollisions,
+                    temp,
+                    parser_result->ID
+                );
+
+            }
+        }
 
         switch(parser_result->decl_type->type){
             case Int:
@@ -784,6 +881,8 @@ void checkDecl(struct decl * parser_result, GHashTable * scope){
 
         // creating local scope for functions
         GHashTable *FunctionNameScope = g_hash_table_new(g_str_hash, g_str_equal);
+        // create table for collisions
+        FunctionNameCollisions = g_hash_table_new(g_str_hash, g_str_equal);
 
         //now check params and stms
         if(parser_result->params != NULL){
@@ -813,6 +912,8 @@ void checkDecl(struct decl * parser_result, GHashTable * scope){
 
         //destroying scope
         g_hash_table_destroy(FunctionNameScope);
+        //destroying collision scope
+        g_hash_table_destroy(FunctionNameCollisions);
     }
 
 }

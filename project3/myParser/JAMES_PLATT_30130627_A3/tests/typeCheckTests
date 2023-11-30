@@ -65,6 +65,31 @@
 // Exiting
 // */
 
+// // TEST 2.5
+// // this is an extension of the last test
+// // if there is a function also called x,
+// // I decided to allow that, assuming the programmer
+// // is referring to the function (essentially diferentiating by signature)
+// void x(void){ }
+// void main ( void ) {
+// int x;
+// x();
+// }
+// // EXPECTED OUTPUT
+// /*
+// pring the tree!
+// Checking semantics
+// Semantics are good!
+// Program 
+// Func Void x @73
+ 
+// Func Void main @77
+//  	Var Int x1 @75
+// 	Expression @76 of type VOIDFUNC: x()
+
+// parsing successful
+// */
+
 // // TEST 3
 // // Incorrect use of array index syntax:
 // void main ( void ) {
@@ -75,7 +100,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// array indexing on non array x on line 72
+// array indexing on non array x on line 97
 // Exiting
 // */
 
@@ -93,7 +118,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Invalid argument(s) in call for function foo on line 90
+// Invalid argument(s) in call for function foo on line 115
 // Expecing INT[], recieved INT
 // */
 
@@ -111,7 +136,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// function call to foo on line 108 missing args
+// function call to foo on line 133 missing args
 // */
 
 // // TEST 4.2

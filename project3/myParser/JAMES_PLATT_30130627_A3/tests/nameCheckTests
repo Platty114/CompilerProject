@@ -18,7 +18,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Use of unitialized var x on line 13
+// Use of unitialized var x on line 14
 // Exiting
 // */
 
@@ -39,12 +39,14 @@
 // Checking semantics
 // Semantics are good!
 // Program 
-// Func Void foo
-//  @28	Var Int x @26
-// 	Expression @27 of type INT: x = INT: 0
-// Func Void main
-//  @32	Var Int foo @30
-// 	Expression @31 of type INT: foo = INT: 0
+// Func Void foo @31
+//  	Var Int x @29
+// 	Expression @30 of type INT: x = INT: 0
+// Func Void main @35
+//  	Var Int foo1 @33
+// 	Expression @34 of type INT: foo1 = INT: 0
+
+// parsing successful
 // */
 
 // // TEST 2.5 
@@ -63,11 +65,13 @@
 // Checking semantics
 // Semantics are good!
 // Program 
-// 	Var Int x @53
-// Func Int main @59
 // 	Var Int x @55
-// 	Expression @57 of type INT: x = INT: 7 > 5
-// 	Return Expression @58: INT: x
+// Func Int main @61
+// 	Var Int x1 @57
+// 	Expression @59 of type INT: x1 = INT: 7 > 5
+// 	Return Expression @60: INT: x1
+
+// parsing successful
 // */
 
 // // TEST 3 : Redeclaration in same scope:
@@ -81,7 +85,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Redeclaration of x on line 54
+// Redeclaration of x on line 81
 // Exiting
 // */
 
@@ -94,7 +98,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Redeclaration of x on line 67
+// Redeclaration of x on line 94
 // Exiting
 // */
 
@@ -108,7 +112,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Redeclaration of x on line 81
+// Redeclaration of x on line 108
 // Exiting
 // */
 
@@ -123,9 +127,11 @@
 // Checking semantics
 // Semantics are good!
 // Program 
-// Func Void foo
-//  @96	Int Param x @94
-// 	Expression @95 of type INT: x = INT: 1
+// Func Void foo @123
+//  	Int Param x @121
+// 	Expression @122 of type INT: x = INT: 1
+
+// parsing successful
 // */
 
 // // TEST 6.5
@@ -141,9 +147,11 @@
 // Checking semantics
 // Semantics are good!
 // Program 
-// 	Var Int x @134
-// Func Void main
-//  @137	Expression @136 of type INT: x = INT: 7
+// 	Var Int x @140
+// Func Void main @143
+//  	Expression @142 of type INT: x = INT: 7
+
+// parsing successful
 // */
 
 // // TEST 7 Main Function Error:
@@ -158,7 +166,7 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Func declaration after main on line 114
+// Func declaration after main on line 164
 // Exiting
 // */
 
@@ -177,6 +185,6 @@
 // /*
 // pring the tree!
 // Checking semantics
-// Func declaration after main on line 134
+// Func declaration after main on line 183
 // Exiting
 // */
