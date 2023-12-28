@@ -1,7 +1,0 @@
-
-void main(void){
-    int x; int y;
-    if(5 == 7)
-        return u;
-    
-}

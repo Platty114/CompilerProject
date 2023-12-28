@@ -39,4 +39,6 @@ int main(void){
                 return u;
             else
                 y = 2;
+        else
+            x = 5;
 }
